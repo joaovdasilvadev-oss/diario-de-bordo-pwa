@@ -1,61 +1,62 @@
-const CACHE_NAME = "diario-de-bordo-v2";
-const APP_FILES = [
-  "./",
-  "./index.html",
-  "./style.min.css",
-  "./script.min.js",
-  "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
-];
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17324d">
+  <meta name="description" content="Registre e consulte suas atividades diárias no Diário de Bordo.">
+  <title>Diário de Bordo</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="style.min.css">
+  <script src="script.min.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="container topo-conteudo">
+      <div>
+        <p class="etiqueta">SEU ESPAÇO PESSOAL</p>
+        <h1>Diário de Bordo</h1>
+        <p class="subtitulo">Registre os momentos e acompanhe sua jornada.</p>
+      </div>
+      <button id="installButton" class="botao botao-secundario" hidden>Instalar aplicativo</button>
+    </div>
+  </header>
 
-self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_FILES))
-  );
-  self.skipWaiting();
-});
+  <main class="container layout">
+    <section class="painel formulario-painel">
+      <h2>Nova entrada</h2>
+      <p class="texto-ajuda">O que aconteceu no seu dia?</p>
+      <form id="entryForm">
+        <label for="title">Título</label>
+        <input id="title" name="title" type="text" maxlength="70" placeholder="Ex.: Primeiro dia no projeto" required>
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) =>
-      Promise.all(
-        cacheNames
-          .filter((cacheName) => cacheName !== CACHE_NAME)
-          .map((cacheName) => caches.delete(cacheName))
-      )
-    )
-  );
-  self.clients.claim();
-});
+        <label for="description">Descrição</label>
+        <textarea id="description" name="description" rows="5" maxlength="1000" placeholder="Conte um pouco sobre essa atividade..." required></textarea>
 
-self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+        <label for="date">Data</label>
+        <input id="date" name="date" type="date" required>
 
-  const requestUrl = new URL(event.request.url);
-  if (requestUrl.origin !== self.location.origin) return;
+        <button class="botao botao-principal" type="submit">Salvar entrada</button>
+        <p id="formMessage" class="mensagem" role="status" aria-live="polite"></p>
+      </form>
+    </section>
 
-  event.respondWith(
-    fetch(event.request)
-      .then((response) => {
-        if (response && response.status === 200) {
-          const responseCopy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseCopy));
-        }
-        return response;
-      })
-      .catch(async () => {
-        const cachedResponse = await caches.match(event.request);
-        if (cachedResponse) return cachedResponse;
+    <section class="lista-area">
+      <div class="lista-cabecalho">
+        <div>
+          <h2>Minhas entradas</h2>
+          <p class="texto-ajuda">Suas anotações ficam salvas neste dispositivo.</p>
+        </div>
+        <span id="entryCount" class="contador">0 entradas</span>
+      </div>
+      <div id="entriesList" class="entradas-lista" aria-live="polite"></div>
+    </section>
+  </main>
 
-        if (event.request.mode === "navigate") {
-          return caches.match("./index.html");
-        }
-
-        return new Response("Conteúdo indisponível offline.", {
-          status: 503,
-          statusText: "Offline"
-        });
-      })
-  );
-});
+  <footer class="rodape">
+    <p>Diário de Bordo · Seus registros, sempre com você.</p>
+    <p id="connectionStatus" class="status-conexao">Verificando conexão...</p>
+  </footer>
+</body>
+</html>
