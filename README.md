@@ -60,36 +60,44 @@ A versão otimizada apresentou:
 
 ## Resultados do Lighthouse
 
-A avaliação foi realizada utilizando o Chrome DevTools, com as seguintes configurações:
+As avaliações foram realizadas utilizando o Chrome DevTools, com as seguintes configurações:
 
 - Dispositivo: Mobile.
 - Modo: Navigation.
 - Categoria: Performance.
 - Rede simulada: Slow 4G.
 
-### Versão otimizada
+### Comparação dos resultados
 
-| Métrica | Resultado |
-|---|---:|
-| Performance | 100 |
-| First Contentful Paint (FCP) | 1,1 s |
-| Largest Contentful Paint (LCP) | 1,3 s |
-| Total Blocking Time (TBT) | 0 ms |
-| Cumulative Layout Shift (CLS) | 0 |
-| Speed Index | 1,1 s |
+| Métrica | Versão original | Versão otimizada |
+|---|---:|---:|
+| Performance | 97 | 100 |
+| First Contentful Paint (FCP) | 1,9 s | 1,1 s |
+| Largest Contentful Paint (LCP) | 2,1 s | 1,3 s |
+| Total Blocking Time (TBT) | 0 ms | 0 ms |
+| Cumulative Layout Shift (CLS) | 0 | 0 |
+| Speed Index | 2,6 s | 1,1 s |
 
-### Versão original
+### Análise dos resultados
 
-Os resultados do Lighthouse da versão original serão registrados após a execução da análise com as mesmas configurações utilizadas na versão otimizada.
+Após as otimizações, a pontuação de Performance passou de 97 para 100.
+
+Também houve redução nos tempos de carregamento:
+
+- FCP: redução de 0,8 segundo.
+- LCP: redução de 0,8 segundo.
+- Speed Index: redução de 1,5 segundo.
+
+O Total Blocking Time permaneceu em 0 ms e o Cumulative Layout Shift permaneceu em 0, demonstrando que a aplicação manteve sua estabilidade visual e capacidade de resposta durante o carregamento.
 
 ## Evidências
 
 Os relatórios e registros utilizados na comparação estão disponíveis na pasta `evidencias`:
 
-- `evidencias/lighthouse-antes.html` — relatório Lighthouse da versão original.
-- `evidencias/lighthouse-depois.html` — relatório Lighthouse da versão otimizada.
-- `evidencias/lighthouse-antes.png` — captura dos resultados anteriores.
-- `evidencias/lighthouse-depois.png` — captura dos resultados posteriores.
+- [Relatório Lighthouse — Versão original](evidencias/lighthouse-antes.html)
+- [Relatório Lighthouse — Versão otimizada](evidencias/lighthouse-depois.html)
+- [Captura Lighthouse — Versão original](evidencias/lighthouse-antes.png)
+- [Captura Lighthouse — Versão otimizada](evidencias/lighthouse-depois.png)
 
 ## Estrutura do projeto
 
@@ -118,6 +126,8 @@ diario-de-bordo-pwa/
 
 ## Considerações finais
 
-As otimizações reduziram a quantidade de dados transferidos pela rede e o tamanho total dos recursos carregados pela aplicação.
+As otimizações realizadas reduziram o volume de dados transferidos pela rede e o tamanho total dos recursos carregados pela aplicação.
 
-A pontuação de Performance permaneceu em 100 na avaliação da versão otimizada. Os resultados demonstram que a minificação dos arquivos contribuiu para diminuir o volume de dados necessário para carregar a aplicação, mantendo suas funcionalidades.
+A pontuação de Performance passou de 97 para 100, acompanhada pela melhora nos indicadores de carregamento FCP, LCP e Speed Index.
+
+Os resultados demonstram que a minificação dos arquivos e os ajustes realizados contribuíram para melhorar o desempenho da aplicação, mantendo suas funcionalidades.
