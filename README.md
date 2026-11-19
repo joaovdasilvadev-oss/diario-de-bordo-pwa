@@ -18,7 +18,18 @@ Aplicação web desenvolvida como projeto de estudo, utilizando HTML5, CSS3 e Ja
 - LocalStorage
 - Service Worker
 - Web App Manifest
+- Chrome DevTools
 - Lighthouse
+
+## Gargalos identificados
+
+Na análise inicial realizada com o Lighthouse, foram identificados pontos que poderiam ser melhorados no carregamento da aplicação.
+
+O relatório inicial apontou solicitações que bloqueavam a renderização, com uma economia potencial estimada de 650 ms.
+
+Também foi identificada a oportunidade de reduzir o tamanho dos arquivos HTML, CSS e JavaScript por meio da minificação.
+
+Esses pontos foram considerados durante o processo de otimização.
 
 ## Otimizações realizadas
 
@@ -67,6 +78,7 @@ As avaliações foram realizadas utilizando o Chrome DevTools, com as seguintes 
 - Modo: Navigation.
 - Categoria: Performance.
 - Rede simulada: Slow 4G.
+- Lighthouse: versão 13.5.0.
 
 ### Comparação dos resultados
 
