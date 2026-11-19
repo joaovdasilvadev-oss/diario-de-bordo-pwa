@@ -94,10 +94,10 @@ O Total Blocking Time permaneceu em 0 ms e o Cumulative Layout Shift permaneceu 
 
 Os relatórios e registros utilizados na comparação estão disponíveis na pasta `evidencias`:
 
-- [Relatório Lighthouse — Versão original](evidencias/lighthouse-antes.html)
-- [Relatório Lighthouse — Versão otimizada](evidencias/lighthouse-depois.html)
-- [Captura Lighthouse — Versão original](evidencias/lighthouse-antes.png)
-- [Captura Lighthouse — Versão otimizada](evidencias/lighthouse-depois.png)
+- [Relatório antes da otimização (HTML)](diario-de-bordo/evidencias/lighthouse-antes.html)
+- [Relatório antes da otimização (PNG)](diario-de-bordo/evidencias/lighthouse-antes.png)
+- [Relatório depois da otimização (HTML)](diario-de-bordo/evidencias/lighthouse-depois.html)
+- [Relatório depois da otimização (PNG)](diario-de-bordo/evidencias/lighthouse-depois.png)
 
 ## Estrutura do projeto
 
