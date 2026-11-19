@@ -33,11 +33,12 @@ Foram aplicadas otimizações para reduzir o tamanho dos arquivos e melhorar o c
 
 ### Arquivos utilizados na versão otimizada
 
+- `index.html`
 - `index.min.html`
 - `style.min.css`
 - `script.min.js`
 
-O arquivo `index.min.html` utiliza diretamente as versões minificadas do CSS e do JavaScript.
+Os arquivos `index.html` e `index.min.html` estão minificados e utilizam diretamente as versões otimizadas do CSS (`style.min.css`) e do JavaScript (`script.min.js`).
 
 ## Comparação de carregamento
 
@@ -45,10 +46,10 @@ Foi realizada uma comparação entre a versão original e a versão otimizada ut
 
 As medições foram realizadas com as mesmas configurações de rede e cache, utilizando a simulação Slow 4G e a opção Disable cache ativada.
 
-| Métrica | Versão original | Versão otimizada | Redução |
-|---|---:|---:|---:|
-| Transferred | 17.250 B | 15.960 B | 7,48% |
-| Resources | 31.260 B | 28.680 B | 8,25% |
+| **Métrica** | **Versão original** | **Versão otimizada** | **Redução** |
+| ----------- | ------------------- | -------------------- | ----------- |
+| Transferred | 17.250 B            | 15.960 B             | 7,48%       |
+| Resources   | 31.260 B            | 28.680 B             | 8,25%       |
 
 ### Resultado
 
@@ -69,14 +70,14 @@ As avaliações foram realizadas utilizando o Chrome DevTools, com as seguintes 
 
 ### Comparação dos resultados
 
-| Métrica | Versão original | Versão otimizada |
-|---|---:|---:|
-| Performance | 97 | 100 |
-| First Contentful Paint (FCP) | 1,9 s | 1,1 s |
-| Largest Contentful Paint (LCP) | 2,1 s | 1,3 s |
-| Total Blocking Time (TBT) | 0 ms | 0 ms |
-| Cumulative Layout Shift (CLS) | 0 | 0 |
-| Speed Index | 2,6 s | 1,1 s |
+| **Métrica**                    | **Versão original** | **Versão otimizada** |
+| ------------------------------ | ------------------- | -------------------- |
+| Performance                    | 97                  | 100                  |
+| First Contentful Paint (FCP)   | 1,9 s               | 1,1 s                |
+| Largest Contentful Paint (LCP) | 2,1 s               | 1,3 s                |
+| Total Blocking Time (TBT)      | 0 ms                | 0 ms                 |
+| Cumulative Layout Shift (CLS)  | 0                   | 0                    |
+| Speed Index                    | 2,6 s               | 1,1 s                |
 
 ### Análise dos resultados
 
@@ -92,36 +93,36 @@ O Total Blocking Time permaneceu em 0 ms e o Cumulative Layout Shift permaneceu 
 
 ## Evidências
 
-Os relatórios e registros utilizados na comparação estão disponíveis na pasta `evidencias`:
+Os relatórios e registros utilizados na comparação estão disponíveis na pasta `diario-de-bordo/evidencias`:
 
-- [Relatório antes da otimização (HTML)](diario-de-bordo/evidencias/lighthouse-antes.html)
-- [Relatório antes da otimização (PNG)](diario-de-bordo/evidencias/lighthouse-antes.png)
-- [Relatório depois da otimização (HTML)](diario-de-bordo/evidencias/lighthouse-depois.html)
-- [Relatório depois da otimização (PNG)](diario-de-bordo/evidencias/lighthouse-depois.png)
+- [Relatório antes da otimização (HTML)](https://github.com/joaovdasilvadev-oss/diario-de-bordo-pwa/blob/main/diario-de-bordo/evidencias/lighthouse-antes.html)
+- [Relatório antes da otimização (PNG)](https://github.com/joaovdasilvadev-oss/diario-de-bordo-pwa/blob/main/diario-de-bordo/evidencias/lighthouse-antes.png)
+- [Relatório depois da otimização (HTML)](https://github.com/joaovdasilvadev-oss/diario-de-bordo-pwa/blob/main/diario-de-bordo/evidencias/lighthouse-depois.html)
+- [Relatório depois da otimização (PNG)](https://github.com/joaovdasilvadev-oss/diario-de-bordo-pwa/blob/main/diario-de-bordo/evidencias/lighthouse-depois.png)
 
-## Estrutura do projeto
+## Estrutura do repositório
 
 ```text
 diario-de-bordo-pwa/
-│
-├── index.html
-├── index.min.html
-├── style.css
-├── style.min.css
-├── script.js
-├── script.min.js
-├── manifest.json
-├── service-worker.js
-│
-├── evidencias/
-│   ├── lighthouse-antes.html
-│   ├── lighthouse-depois.html
-│   ├── lighthouse-antes.png
-│   └── lighthouse-depois.png
-│
-└── icons/
-    ├── icon-192.png
-    └── icon-512.png
+├── README.md
+└── diario-de-bordo/
+    ├── evidencias/
+    │   ├── lighthouse-antes.html
+    │   ├── lighthouse-antes.png
+    │   ├── lighthouse-depois.html
+    │   └── lighthouse-depois.png
+    ├── icons/
+    │   ├── icon-192.png
+    │   └── icon-512.png
+    ├── index.html
+    ├── index.min.html
+    ├── manifest.json
+    ├── README.md
+    ├── script.js
+    ├── script.min.js
+    ├── service-worker.js
+    ├── style.css
+    └── style.min.css
 ```
 
 ## Considerações finais
